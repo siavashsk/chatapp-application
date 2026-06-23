@@ -1,6 +1,7 @@
 import { dummyConversationData } from "@/assets/assets";
 import { styles } from "@/assets/styles/MessagesScreen.styles";
 import StoriesBar from "@/components/StoriesBar";
+import StoryViewer from "@/components/StoryViewer";
 import { Colors } from "@/constants/Colors";
 import { Conversation, UserStory } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
@@ -62,8 +63,14 @@ export default function MessagesScreen() {
       </View>
 
       {/* Stories */}
-      <StoriesBar onViewStory={(us) => setSelectedStory(us)}/>
+      <StoriesBar onViewStory={(us) => setSelectedStory(us)} />
 
+      {selectedStory && (
+        <StoryViewer
+          userStory={selectedStory}
+          onClose={() => setSelectedStory(null)}
+        />
+      )}
       {/* Divider */}
 
       {/* Conversation list */}
